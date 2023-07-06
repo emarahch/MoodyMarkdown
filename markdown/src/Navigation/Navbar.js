@@ -3,7 +3,10 @@
 import { useState, Button } from 'react'
 import React from "react";
 import { NavLink } from 'react-router-dom';
-import './Navbar.css'
+import DarkModeToggle from './darkModeToggle';
+import addNoteButton from './addNote';
+import './Navbar.css';
+
 
 
 
@@ -24,7 +27,7 @@ const Navbar = () => {
               <button type="button">Back</button>
               </li>
               <li>
-              <button type="button">Theme</button>
+              <DarkModeToggle/>
               </li>
               <li>
                 <NavLink to="/">Sound</NavLink>
@@ -33,7 +36,7 @@ const Navbar = () => {
                 <NavLink to="/contact">Contact</NavLink>
               </li>
               <li>
-              <button type="button">Add note</button>
+              <addNoteButton/>
               </li>
             </ul>
           </div>

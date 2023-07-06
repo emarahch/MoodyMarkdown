@@ -45,3 +45,10 @@
 border-left: 1px solid black;
 height: 750px;
 }
+
+
+
+body.dark {
+ background: #1f2023;
+color: #efefef;
+}
