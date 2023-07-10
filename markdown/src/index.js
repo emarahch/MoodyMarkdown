@@ -1,13 +1,41 @@
+// https://reactrouter.com/en/main/start/tutorial
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
 import App from './App';
+import Note from './routes/Note'
 import reportWebVitals from './reportWebVitals';
+import Root, { loader as rootLoader } from "./routes/root";
+import ErrorPage from "./error-page";
+
+
+const router  = createBrowserRouter([
+  {
+    path: "/",
+    element: <Root />,
+    errorElement: <ErrorPage />,
+    loader: rootLoader,
+    children: [
+      {
+        path: "contacts/:contactId",
+        element: <Note />,
+      },
+    ],
+  },
+]);
+
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    {/* <App /> */}
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 

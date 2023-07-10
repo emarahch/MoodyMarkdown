@@ -1,4 +1,6 @@
 // https://www.codevertiser.com/reactjs-responsive-navbar/
+// https://stackoverflow.com/questions/74363737/how-to-create-a-list-by-getting-the-ids-of-specific-elements-in-react
+// https://reactrouter.com/en/main/start/tutorial
 
 import { useState, Button } from "react";
 import React from "react";
@@ -9,46 +11,16 @@ import "./Navbar.css";
 
 const Navbar = () => {
   const [showNavbar, setShowNavbar] = useState(false);
-  const [addNotelist, setNoteList] = useState(0);
-  const notes = [];
+  const [addNotelist, setNoteList] = useState([]);
 
-  // const handleShowNavbar = () => {
-  //   setShowNavbar(!showNavbar);
-  // };
+  const handleAddNote = () => {
+    const newNote = Date.now()
+    setNoteList(v => [...v, newNote])
+  }
 
-
-  const ParentComponent = ({ notes, incrementCount }) => {
-    return (
-      <>
-        <button onClick={incrementCount}>Add another component</button>
-        <div>{notes}</div>
-        
-      </>
-    );
-  };
-  
-  const ChildComponent = () => {
-    return <h4>This is a child component</h4>;
-  };
-
-
-
-  
-
-  // Function to increment count by 1
-  const incrementCount = () => {
-    setNoteList(addNotelist+1);
-   
-  };
-
-
-
-
-
-
-
-
-
+  function Notey() {
+    return <div>Note</div>
+  }
 
   return (
     <nav className="navbar">
@@ -70,14 +42,9 @@ const Navbar = () => {
             </li>
             <li>
               <div className="Notes">
-                {/* {addNotelist} */}
-                
-                <ParentComponent addComponent={incrementCount}></ParentComponent>
-                
-                {/* <button onClick={incrementCount} type="button">
-                  Add note
-                </button> */}
+              <li> <NavLink to="/{meow.id}"> {addNotelist.map((meow) => <Notey />)}</NavLink></li>
               </div>
+              <button onClick={handleAddNote}>New note</button>
             </li>
           </ul>
         </div>
